@@ -13,6 +13,7 @@ hVal = 0
 sVal = 0
 vVal = 0
 
+
 class VideoThread(QtCore.QThread):
     change_pixmap_signal = QtCore.pyqtSignal(np.ndarray)
 
@@ -84,12 +85,11 @@ class MainWindow(QtWidgets.QMainWindow):
         hsv = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2HSV)
         # define range of blue color in HSV
         lower_blue = np.array([110, 50, 50])
-        upper_blue = np.array([130, 255, 255])
+        upper_blue = np.array([255, 255, 255])
         # Threshold the HSV image to get only blue colors
         mask = cv2.inRange(hsv, lower_blue, upper_blue)
         # Bitwise-AND mask and original image
         res = cv2.bitwise_and(rgb_image, rgb_image, mask=mask)
-
         #rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
         h, w, ch = res.shape
         bytes_per_line = ch * w
@@ -103,3 +103,4 @@ if __name__ == "__main__":
     ui = MainWindow()
     ui.show()
     sys.exit(app.exec_())
+
