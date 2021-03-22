@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import cv2
 import sys
 import platform
 from os import system, path
@@ -14,7 +15,24 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
         self.show()
-        #
+        # Connect slider for Hue parameter to its function
+        self.ui.hue_horizontalSlider.valueChanged.connect(self.adjustHue)
+        # Connect slider for Saturation parameter to its function
+        self.ui.saturation_horizontalSlider.valueChanged.connect(self.adjustSaturation)
+        # Connect slider for Value parameter to its function
+        self.ui.value_horizontalSlider.valueChanged.connect(self.adjustValue)
+
+    # Function to Adjust hue slider
+    def adjustHue(self, value):
+        self.ui.hue_lineEdit.setText(str(value))
+
+    # Function to Adjust hue slider
+    def adjustSaturation(self, value):
+        self.ui.saturation_lineEdit.setText(str(value))
+
+    # Function to Adjust hue slider
+    def adjustValue(self, value):
+        self.ui.value_lineEdit.setText(str(value))
     #     # When checked connect the appropriate checkboxes to the corresponding function
     #     self.ui.checkBox_p1.stateChanged.connect(self.p1)
     #     # On toolbutton click execute the find_directory function
