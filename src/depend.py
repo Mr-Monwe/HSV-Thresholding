@@ -44,12 +44,14 @@ class Ui_mainWindow(object):
         self.value_horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.value_horizontalSlider.setMaximum(255)
         self.value_horizontalSlider.setObjectName("value_horizontalSlider")
+        ###
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(40, 10, 640, 480))
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap("./assets/cv.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
+        ###
         self.hue_label = QtWidgets.QLabel(self.centralwidget)
         self.hue_label.setGeometry(QtCore.QRect(70, 540, 28, 17))
         self.hue_label.setStyleSheet("color: rgb(255, 255, 255);")
