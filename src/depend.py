@@ -47,7 +47,7 @@ class Ui_mainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(40, 10, 640, 480))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../../../../../assets/cv.png"))
+        self.label.setPixmap(QtGui.QPixmap("./assets/cv.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.hue_label = QtWidgets.QLabel(self.centralwidget)
