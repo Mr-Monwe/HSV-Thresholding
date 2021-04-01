@@ -12,6 +12,7 @@ from depend import Ui_mainWindow
 hVal = 0
 sVal = 0
 vVal = 0
+CAMPATH = 2
 
 
 class VideoThread(QtCore.QThread):
@@ -23,7 +24,7 @@ class VideoThread(QtCore.QThread):
 
     def run(self):
         # capture from web cam
-        cap = cv2.VideoCapture(2)
+        cap = cv2.VideoCapture(CAMPATH)
         while self._run_flag:
             ret, cv_img = cap.read()
             if ret:
@@ -43,12 +44,22 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
         self.show()
-        # Connect slider for Hue parameter to its function
-        self.ui.hue_horizontalSlider.valueChanged.connect(self.adjustHue)
-        # Connect slider for Saturation parameter to its function
-        self.ui.saturation_horizontalSlider.valueChanged.connect(self.adjustSaturation)
-        # Connect slider for Value parameter to its function
-        self.ui.value_horizontalSlider.valueChanged.connect(self.adjustValue)
+        # Connect slider for Upper Hue parameter to its function
+        self.ui.upper_hue_horizontalSlider.valueChanged.connect(self.adjustHueUpper)
+        # Connect slider for Upper Saturation parameter to its function
+        self.ui.upper_saturation_horizontalSlider.valueChanged.connect(self.adjustSaturationUpper)
+        # Connect slider for Upper Value parameter to its function
+        self.ui.upper_value_horizontalSlider.valueChanged.connect(self.adjustValueUpper)
+        # Connect slider for Lower Hue parameter to its function
+        self.ui.lower_hue_horizontalSlider.valueChanged.connect(self.adjustHueLower)
+        # Connect slider for Lower Saturation parameter to its function
+        self.ui.lower_saturation_horizontalSlider.valueChanged.connect(self.adjustSaturationLower)
+        # Connect slider for Lower Value parameter to its function
+        self.ui.lower_value_horizontalSlider.valueChanged.connect(self.adjustValueLower)
+        #
+        self.ui.test_pushButton.clicked.connect(self.parseCameraPath)
+        #
+        self.ui.reset_pushButton.clicked.connect(self.resetCameraPath)
         # create the video capture thread
         self.thread = VideoThread()
         # connect its signal to the update_image slot
@@ -57,20 +68,41 @@ class MainWindow(QtWidgets.QMainWindow):
         self.thread.start()
 
     # Function to Adjust hue slider
-    def adjustHue(self, value):
-        self.ui.hue_lineEdit.setText(str(value))
+    def adjustHueUpper(self, value):
+        self.ui.upper_hue_lineEdit.setText(str(value))
 
     # Function to Adjust hue slider
-    def adjustSaturation(self, value):
-        self.ui.saturation_lineEdit.setText(str(value))
+    def adjustSaturationUpper(self, value):
+        self.ui.upper_saturation_lineEdit.setText(str(value))
 
     # Function to Adjust hue slider
-    def adjustValue(self, value):
-        self.ui.value_lineEdit.setText(str(value))
+    def adjustValueUpper(self, value):
+        self.ui.upper_value_lineEdit.setText(str(value))
+
+    # Function to Adjust hue slider
+    def adjustHueLower(self, value):
+        self.ui.lower_hue_lineEdit.setText(str(value))
+
+    # Function to Adjust hue slider
+    def adjustSaturationLower(self, value):
+        self.ui.lower_saturation_lineEdit.setText(str(value))
+
+    # Function to Adjust hue slider
+    def adjustValueLower(self, value):
+        self.ui.lower_value_lineEdit.setText(str(value))
 
     def closeEvent(self, event):
         self.thread.stop()
         event.accept()
+
+    # Function to get camera path set by the user
+    def parseCameraPath(self):
+        # print(self.ui.camera_path_lineEdit.text())
+        CAMPATH = int(self.ui.camera_path_lineEdit.text())
+
+    # Function to reset camera path to 0
+    def resetCameraPath(self):
+        self.ui.camera_path_lineEdit.setText("0")
 
     @QtCore.pyqtSlot(np.ndarray)
     def update_image(self, cv_img):
@@ -104,3 +136,6 @@ if __name__ == "__main__":
     ui.show()
     sys.exit(app.exec_())
 
+
+# https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html
+# https://docs.wpilib.org/en/stable/docs/software/vision-processing/wpilibpi/image-thresholding.html
