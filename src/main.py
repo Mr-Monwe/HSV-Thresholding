@@ -9,10 +9,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 # Main window UI File
 from depend import Ui_mainWindow
 
-hVal = 0
-sVal = 0
-vVal = 0
-CAMPATH = 2
+CAMPATH = 3
 
 
 class VideoThread(QtCore.QThread):
@@ -115,11 +112,17 @@ class MainWindow(QtWidgets.QMainWindow):
         rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
         # Convert BGR to HSV
         hsv = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2HSV)
-        # define range of blue color in HSV
-        lower_blue = np.array([110, 50, 50])
-        upper_blue = np.array([255, 255, 255])
-        # Threshold the HSV image to get only blue colors
-        mask = cv2.inRange(hsv, lower_blue, upper_blue)
+        # define range of color in HSV
+        lower_H = self.ui.lower_hue_horizontalSlider.value()
+        lower_S = self.ui.lower_saturation_horizontalSlider.value()
+        lower_V = self.ui.lower_value_horizontalSlider.value()
+        upper_H = self.ui.upper_hue_horizontalSlider.value()
+        upper_S = self.ui.upper_saturation_horizontalSlider.value()
+        upper_V = self.ui.upper_value_horizontalSlider.value()
+        lower_bound = np.array([lower_H, lower_S, lower_V])
+        upper_bound = np.array([upper_H, upper_S, upper_V])
+        # Threshold the HSV image for target color
+        mask = cv2.inRange(hsv, lower_bound, upper_bound)
         # Bitwise-AND mask and original image
         res = cv2.bitwise_and(rgb_image, rgb_image, mask=mask)
         #rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
