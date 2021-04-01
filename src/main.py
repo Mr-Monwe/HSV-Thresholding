@@ -9,30 +9,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 # Main window UI File
 from depend import Ui_mainWindow
 
-CAMPATH = 3
-
-
-class VideoThread(QtCore.QThread):
-    change_pixmap_signal = QtCore.pyqtSignal(np.ndarray)
-
-    def __init__(self):
-        super().__init__()
-        self._run_flag = True
-
-    def run(self):
-        # capture from web cam
-        cap = cv2.VideoCapture(CAMPATH)
-        while self._run_flag:
-            ret, cv_img = cap.read()
-            if ret:
-                self.change_pixmap_signal.emit(cv_img)
-        # shut down capture system
-        cap.release()
-
-    def stop(self):
-        """Sets run flag to False and waits for thread to finish"""
-        self._run_flag = False
-        self.wait()
+CAMPATH = 0
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -53,9 +30,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.lower_saturation_horizontalSlider.valueChanged.connect(self.adjustSaturationLower)
         # Connect slider for Lower Value parameter to its function
         self.ui.lower_value_horizontalSlider.valueChanged.connect(self.adjustValueLower)
-        #
+        # Connect the test push button to trigger the camera path
         self.ui.test_pushButton.clicked.connect(self.parseCameraPath)
-        #
+        # Connect the reset push button to reset the camera path
         self.ui.reset_pushButton.clicked.connect(self.resetCameraPath)
         # create the video capture thread
         self.thread = VideoThread()
@@ -95,11 +72,15 @@ class MainWindow(QtWidgets.QMainWindow):
     # Function to get camera path set by the user
     def parseCameraPath(self):
         # print(self.ui.camera_path_lineEdit.text())
+        global CAMPATH
         CAMPATH = int(self.ui.camera_path_lineEdit.text())
+        # return CAMPATH
 
     # Function to reset camera path to 0
     def resetCameraPath(self):
         self.ui.camera_path_lineEdit.setText("0")
+        global CAMPATH
+        CAMPATH = 0
 
     @QtCore.pyqtSlot(np.ndarray)
     def update_image(self, cv_img):
@@ -131,6 +112,31 @@ class MainWindow(QtWidgets.QMainWindow):
         convert_to_Qt_format = QtGui.QImage(res.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
         p = convert_to_Qt_format.scaled(640, 480, QtCore.Qt.KeepAspectRatio)
         return QtGui.QPixmap.fromImage(p)
+
+
+class VideoThread(QtCore.QThread):
+    change_pixmap_signal = QtCore.pyqtSignal(np.ndarray)
+
+    def __init__(self):
+        super().__init__()
+        self._run_flag = True
+
+    def run(self):
+        # capture from web cam 
+        global CAMPATH
+        cap = cv2.VideoCapture(CAMPATH)  
+        while self._run_flag:
+            ret, cv_img = cap.read()
+            print (CAMPATH)
+            if ret:
+                self.change_pixmap_signal.emit(cv_img)
+        # shut down capture system
+        cap.release()
+
+    def stop(self):
+        """Sets run flag to False and waits for thread to finish"""
+        self._run_flag = False
+        self.wait()
 
 
 if __name__ == "__main__":
