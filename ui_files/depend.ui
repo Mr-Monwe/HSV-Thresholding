@@ -38,7 +38,7 @@
    <widget class="Line" name="upper_div_line">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>171</x>
       <y>510</y>
       <width>460</width>
       <height>20</height>
@@ -51,7 +51,7 @@
    <widget class="QSlider" name="upper_hue_horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>218</x>
+      <x>169</x>
       <y>540</y>
       <width>350</width>
       <height>20</height>
@@ -70,7 +70,7 @@
    <widget class="QSlider" name="upper_saturation_horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>219</x>
+      <x>170</x>
       <y>570</y>
       <width>350</width>
       <height>16</height>
@@ -86,7 +86,7 @@
    <widget class="QSlider" name="upper_value_horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>219</x>
+      <x>170</x>
       <y>600</y>
       <width>350</width>
       <height>16</height>
@@ -121,7 +121,7 @@
    <widget class="QLabel" name="upper_hue_label">
     <property name="geometry">
      <rect>
-      <x>129</x>
+      <x>80</x>
       <y>540</y>
       <width>28</width>
       <height>17</height>
@@ -137,7 +137,7 @@
    <widget class="QLabel" name="upper_saturation_label">
     <property name="geometry">
      <rect>
-      <x>129</x>
+      <x>80</x>
       <y>570</y>
       <width>72</width>
       <height>17</height>
@@ -153,7 +153,7 @@
    <widget class="QLabel" name="upper_value_label">
     <property name="geometry">
      <rect>
-      <x>129</x>
+      <x>80</x>
       <y>600</y>
       <width>39</width>
       <height>17</height>
@@ -169,7 +169,7 @@
    <widget class="QLineEdit" name="upper_hue_lineEdit">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>551</x>
       <y>540</y>
       <width>81</width>
       <height>21</height>
@@ -185,7 +185,7 @@
    <widget class="QLineEdit" name="upper_saturation_lineEdit">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>551</x>
       <y>570</y>
       <width>81</width>
       <height>21</height>
@@ -201,7 +201,7 @@
    <widget class="QLineEdit" name="upper_value_lineEdit">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>551</x>
       <y>600</y>
       <width>81</width>
       <height>21</height>
@@ -217,7 +217,7 @@
    <widget class="QLabel" name="upper_hsv_label">
     <property name="geometry">
      <rect>
-      <x>129</x>
+      <x>80</x>
       <y>510</y>
       <width>79</width>
       <height>17</height>
@@ -238,7 +238,7 @@
    <widget class="QLabel" name="lower_hsv_label">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>81</x>
       <y>640</y>
       <width>83</width>
       <height>17</height>
@@ -259,7 +259,7 @@
    <widget class="QSlider" name="lower_value_horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>171</x>
       <y>730</y>
       <width>350</width>
       <height>16</height>
@@ -275,7 +275,7 @@
    <widget class="QLineEdit" name="lower_hue_lineEdit">
     <property name="geometry">
      <rect>
-      <x>601</x>
+      <x>552</x>
       <y>670</y>
       <width>81</width>
       <height>21</height>
@@ -291,7 +291,7 @@
    <widget class="QSlider" name="lower_saturation_horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>171</x>
       <y>700</y>
       <width>350</width>
       <height>16</height>
@@ -307,7 +307,7 @@
    <widget class="QLabel" name="lower_value_label">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>81</x>
       <y>730</y>
       <width>39</width>
       <height>17</height>
@@ -323,7 +323,7 @@
    <widget class="QLineEdit" name="lower_value_lineEdit">
     <property name="geometry">
      <rect>
-      <x>601</x>
+      <x>552</x>
       <y>730</y>
       <width>81</width>
       <height>21</height>
@@ -339,7 +339,7 @@
    <widget class="Line" name="lower_div_line">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>171</x>
       <y>640</y>
       <width>460</width>
       <height>20</height>
@@ -352,7 +352,7 @@
    <widget class="QLineEdit" name="lower_saturation_lineEdit">
     <property name="geometry">
      <rect>
-      <x>601</x>
+      <x>552</x>
       <y>700</y>
       <width>81</width>
       <height>21</height>
@@ -368,7 +368,7 @@
    <widget class="QLabel" name="lower_saturation_label">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>81</x>
       <y>700</y>
       <width>72</width>
       <height>17</height>
@@ -384,7 +384,7 @@
    <widget class="QLabel" name="lower_hue_label">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>81</x>
       <y>670</y>
       <width>28</width>
       <height>17</height>
@@ -400,7 +400,7 @@
    <widget class="QSlider" name="lower_hue_horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>219</x>
+      <x>170</x>
       <y>670</y>
       <width>350</width>
       <height>20</height>
@@ -414,93 +414,6 @@
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="vertical_div_line">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>510</y>
-      <width>3</width>
-      <height>235</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="camera_label">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>510</y>
-      <width>53</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Camera</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="path_label">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>530</y>
-      <width>35</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>path:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="camera_path_lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>560</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="test_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>600</y>
-      <width>51</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Test</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="reset_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>640</y>
-      <width>51</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
     </property>
    </widget>
   </widget>
